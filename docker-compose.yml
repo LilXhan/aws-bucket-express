@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  api:
+    container_name: portfolio_api
+    image: nodejs_express
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    expose:
+      - 3000
+    volumes:
+      - .:/usr/src/app
+    command: npm run dev
+
+networks:
+  default:
+    name: development
+    external: true
